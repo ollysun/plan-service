@@ -1,21 +1,37 @@
-## Lumen PHP Framework
+## NOTE: This will change
+## vhost setting
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+<VirtualHost *:80>
+	DocumentRoot "/Applications/MAMP/htdocs/plans-service/public/"
+	ServerName plans.local
+	ServerAlias www.plans.local
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+	#ErrorLog /Applications/MAMP/htdocs/Lumen/lumen/log/apache_error.log
+	#CustomLog /Applications/MAMP/htdocs/Lumen/lumen/log/access.log combined
+	#hp_value error_log /Applications/MAMP/htdocs/Lumen/lumen/log/php_error.log
 
-## Official Documentation
+ 	SetEnv ENVIRONMENT development
+</VirtualHost>
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+## host file
+127.0.0.1 plans.local
 
-## Security Vulnerabilities
+## Add/update below env file
+APP_ENV=local
+APP_DEBUG=true
+APP_KEY=cEt1RnAJ2FCiqvocN6atOEnqYsXI0k6D
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+DB_HOST=localhost
+DB_DATABASE=plans
+DB_USERNAME=root
+DB_PASSWORD=root
 
-### License
+CACHE_DRIVER=file
+SESSION_DRIVER=file
+QUEUE_DRIVER=sync
 
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+MAIL_DRIVER=smtp
+MAIL_HOST=mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
