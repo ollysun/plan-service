@@ -6,6 +6,7 @@
 */
 
 
+use App\Models\TerritoryToCountries;
 use Plans\Mapper\PlansMapper;
 use Plans\Models\Plans;
 
@@ -16,9 +17,11 @@ class PlansRepository implements IPlansRepository
 
     public static function getPlansByPlatformProviderGeo($platform ,$iso3, $provider)
     {
+
         $getPlans =  Plans::where('plans.is_active', '=', 1)
-            ->where('plans.platform', '=', 'all')
+
             ->join('provider_territory','plans.provider_id','=','provider_territory.id')
+            ->where('provider_territory.platform', '=', 'all')
             ->join('territories','provider_territory.territory_id','=','territories.id')
             ->where('provider_territory.name', '=', 'stripe')
             ->join('territory_countries','territories.id','=','territory_countries.territory_id')
